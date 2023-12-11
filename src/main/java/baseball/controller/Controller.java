@@ -21,6 +21,7 @@ public class Controller {
             OutputView.printResult(result.getResult());
 
             if (result.checkGameOver()) {
+                OutputView.printGameOverMessage();
                 break;
             }
         }
