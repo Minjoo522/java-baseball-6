@@ -10,9 +10,19 @@ public class Controller {
 
     public void run() {
         OutputView.printStartMessage();
-        Numbers user = new Numbers(InputView.readNumbers());
         Numbers computer = new Numbers(NumbersGenerator.generate());
-        Result result = new Result(user, computer);
-        OutputView.printResult(result.getResult());
+        play(computer);
+    }
+
+    private void play(Numbers computer) {
+        while (true) {
+            Numbers user = new Numbers(InputView.readNumbers());
+            Result result = new Result(user, computer);
+            OutputView.printResult(result.getResult());
+
+            if (result.checkGameOver()) {
+                break;
+            }
+        }
     }
 }

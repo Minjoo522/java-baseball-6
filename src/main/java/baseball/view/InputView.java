@@ -11,6 +11,7 @@ public class InputView {
     }
 
     public static List<Integer> readNumbers() {
+        System.out.print("숫자를 입력해 주세요 : ");
         String input = Console.readLine();
         validateInput(input);
         return parseNumbers(input);

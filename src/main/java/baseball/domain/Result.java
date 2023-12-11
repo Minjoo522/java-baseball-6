@@ -21,4 +21,8 @@ public class Result {
         }
         return "낫싱";
     }
+
+    public boolean checkGameOver() {
+        return strike == 3;
+    }
 }
