@@ -14,7 +14,7 @@ public class InputView {
         System.out.print("숫자를 입력해 주세요 : ");
         String input = Console.readLine();
         validateInput(input);
-        return parseNumbers(input);
+        return splitNumbers(input);
     }
 
     private static void validateInput(String input) {
@@ -23,7 +23,7 @@ public class InputView {
         }
     }
 
-    private static List<Integer> parseNumbers(String input) {
+    private static List<Integer> splitNumbers(String input) {
         return Arrays.stream(input.split(""))
                 .map(InputView::parseToInt)
                 .collect(Collectors.toList());
@@ -35,5 +35,12 @@ public class InputView {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자가 아닙니다.");
         }
+    }
+
+    public static int readNumber() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        validateInput(input);
+        return parseToInt(input);
     }
 }
