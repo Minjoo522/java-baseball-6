@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Numbers {
     private final List<Integer> numbers;
@@ -37,5 +38,25 @@ public class Numbers {
                 throw new IllegalArgumentException("1~9 사이의 숫자만 입력해주세요.");
             }
         }
+    }
+
+    public int countStrike(Numbers compare) {
+        return (int) IntStream.range(0, numbers.size())
+                .filter(i -> compare.isStrike(numbers.get(i), i))
+                .count();
+    }
+
+    private boolean isStrike(int number, int index) {
+        return number == numbers.get(index);
+    }
+
+    public int countBall(Numbers compare) {
+        return (int) IntStream.range(0, numbers.size())
+                .filter(i -> compare.isBall(numbers.get(i), i))
+                .count();
+    }
+
+    private boolean isBall(int number, int index) {
+        return !isStrike(number, index) && numbers.contains(number);
     }
 }
