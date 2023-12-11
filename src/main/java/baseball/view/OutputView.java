@@ -6,7 +6,7 @@ public class OutputView {
     }
 
     public static void printStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Message.START_MESSAGE.message);
     }
 
     public static void printResult(String result) {
@@ -14,6 +14,17 @@ public class OutputView {
     }
 
     public static void printGameOverMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(Message.GAME_OVER_MESSAGE.message);
+    }
+
+    private enum Message {
+        START_MESSAGE("숫자 야구 게임을 시작합니다."),
+        GAME_OVER_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+        private final String message;
+
+        Message(String message) {
+            this.message = message;
+        }
     }
 }

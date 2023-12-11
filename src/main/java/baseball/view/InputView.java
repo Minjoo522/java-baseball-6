@@ -11,7 +11,7 @@ public class InputView {
     }
 
     public static List<Integer> readNumbers() {
-        System.out.print("숫자를 입력해 주세요 : ");
+        System.out.print(Message.REQUEST_NUMBERS.message);
         String input = Console.readLine();
         validateInput(input);
         return splitNumbers(input);
@@ -38,9 +38,20 @@ public class InputView {
     }
 
     public static int readNumber() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Message.REQUEST_RESTART_OR_NOT.message);
         String input = Console.readLine();
         validateInput(input);
         return parseToInt(input);
+    }
+
+    private enum Message {
+        REQUEST_NUMBERS("숫자를 입력해 주세요 : "),
+        REQUEST_RESTART_OR_NOT("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        private final String message;
+
+        Message(String message) {
+            this.message = message;
+        }
     }
 }

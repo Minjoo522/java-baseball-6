@@ -11,18 +11,31 @@ public class Result {
 
     public String getResult() {
         if (strike != 0 && ball != 0) {
-            return String.format("%d볼 %d스트라이크", ball, strike);
+            return String.format(Message.BALL_STRIKE.message, ball, strike);
         }
         if (strike != 0 && ball == 0) {
-            return String.format("%d스트라이크", strike);
+            return String.format(Message.STRIKE.message, strike);
         }
         if (strike == 0 && ball != 0) {
-            return String.format("%d볼", ball);
+            return String.format(Message.BALL.message, ball);
         }
-        return "낫싱";
+        return Message.NOTHING.message;
     }
 
     public boolean checkGameOver() {
         return strike == 3;
+    }
+
+    private enum Message {
+        BALL_STRIKE("%d볼 %d스트라이크"),
+        STRIKE("%d스트라이크"),
+        BALL("%d볼"),
+        NOTHING("낫싱");
+
+        private final String message;
+
+        Message(String message) {
+            this.message = message;
+        }
     }
 }
