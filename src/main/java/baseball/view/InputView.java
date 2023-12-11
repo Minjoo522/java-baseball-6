@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
+    private InputView() {
+        // 인스턴스 생성 방지용
+    }
+
     public static List<Integer> readNumbers() {
         String input = Console.readLine();
         validateInput(input);
