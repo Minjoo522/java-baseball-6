@@ -15,13 +15,13 @@ public class NumbersTest {
 
     @DisplayName("[Exception] 세 자리가 아닌 숫자를 입력하면 예외가 발생한다.")
     @ParameterizedTest
-    @MethodSource("InputNumbers")
+    @MethodSource("inputNumbers")
     void createNumbersByOverSize(List<Integer> input) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Numbers(input));
     }
 
-    private static Stream<Arguments> InputNumbers() {
+    private static Stream<Arguments> inputNumbers() {
         return Stream.of(
                 Arguments.arguments(List.of(1, 2, 3, 4)),
                 Arguments.arguments(List.of(1, 2))
